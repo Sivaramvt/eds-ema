@@ -11,20 +11,20 @@ export default function decorate(block) {
   // Extract content from second row
   const contentRow = rows[1];
 
-  // Build the inner structure
-  const inner = document.createElement('div');
-  inner.className = 'marquee-inner';
-
   // Set up background image
   if (bgPicture) {
-    // Ensure lazy loading on the img inside picture
+    // LCP image — set fetchpriority high, eager loading
     const img = bgPicture.querySelector('img');
-    if (img) img.loading = 'lazy';
+    if (img) {
+      img.loading = 'eager';
+      img.fetchPriority = 'high';
+      img.setAttribute('fetchpriority', 'high');
+    }
     bgPicture.classList.add('marquee-bg');
     block.prepend(bgPicture);
   }
 
-  // Move content into inner wrapper
+  // Build content wrapper
   if (contentRow) {
     const contentDiv = document.createElement('div');
     contentDiv.className = 'marquee-content';
@@ -41,11 +41,9 @@ export default function decorate(block) {
       a.classList.add('marquee-cta');
     });
 
-    inner.append(contentDiv);
+    block.append(contentDiv);
   }
 
   // Remove original rows
   rows.forEach((row) => row.remove());
-
-  block.append(inner);
 }
