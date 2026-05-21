@@ -16,8 +16,8 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: #3b3331;
+  --link-hover-color: #141414;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -322,4 +322,23 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* Full-bleed block overrides */
+main .marquee,
+main .promo,
+main .carousel,
+main .contact-bar {
+  margin: 0 calc(-1 * var(--section-padding, 24px));
+  width: calc(100% + 2 * var(--section-padding, 24px));
+}
+
+@media (width >= 900px) {
+  main .marquee,
+  main .promo,
+  main .carousel,
+  main .contact-bar {
+    margin: 0 calc(-1 * var(--section-padding, 32px));
+    width: calc(100% + 2 * var(--section-padding, 32px));
+  }
 }
