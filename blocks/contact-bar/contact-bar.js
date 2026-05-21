@@ -1,13 +1,11 @@
 /**
  * Contact Bar Block
  *
- * Renders a sticky collapsible utility bar with two sections:
- *   Row 1 — Location search: label + input placeholder text
- *   Row 2 — Call section:    label + phone number link
+ * Renders a collapsible utility bar matching the Wells Fargo "How can we help?" panel.
  *
  * Authoring table (two columns, two rows):
- * | Location | Find a branch near you |
- * | Call us  | tel:1-800-869-3557     |
+ * Row 1 — Location search: label | placeholder text
+ * Row 2 — Appointment + Quick Help: appointment link cell | quick help links cell
  */
 
 function createToggleButton(label, sectionId) {
@@ -34,12 +32,12 @@ function buildLocationSection(label, placeholder, sectionId) {
   const input = document.createElement('input');
   input.type = 'text';
   input.className = 'contact-bar-input';
-  input.placeholder = placeholder || 'Enter ZIP code or city';
-  input.setAttribute('aria-label', placeholder || 'Enter ZIP code or city');
+  input.placeholder = placeholder || 'City, State or ZIP';
+  input.setAttribute('aria-label', placeholder || 'City, State or ZIP');
 
   const searchBtn = document.createElement('button');
   searchBtn.className = 'contact-bar-search-btn';
-  searchBtn.textContent = 'Search';
+  searchBtn.textContent = 'Go';
   searchBtn.setAttribute('aria-label', 'Search for branch location');
 
   content.appendChild(input);
@@ -48,35 +46,74 @@ function buildLocationSection(label, placeholder, sectionId) {
   return wrapper;
 }
 
-function buildCallSection(label, phoneRaw, sectionId) {
+function buildAppointmentSection(apptCell, quickHelpCell, sectionId) {
   const wrapper = document.createElement('div');
-  wrapper.className = 'contact-bar-section contact-bar-call';
-
-  const toggle = createToggleButton(label, sectionId);
-  wrapper.appendChild(toggle);
+  wrapper.className = 'contact-bar-section contact-bar-appointment';
 
   const content = document.createElement('div');
   content.className = 'contact-bar-content';
   content.id = sectionId;
   content.setAttribute('aria-hidden', 'true');
 
-  // phoneRaw may already be an anchor element or plain text
-  let phoneLink;
-  const existingAnchor = typeof phoneRaw === 'string' ? null : phoneRaw.querySelector('a');
-  if (existingAnchor) {
-    phoneLink = existingAnchor.cloneNode(true);
-    phoneLink.className = 'contact-bar-phone';
-  } else {
-    const phoneText = typeof phoneRaw === 'string' ? phoneRaw.trim() : phoneRaw.textContent.trim();
-    phoneLink = document.createElement('a');
-    // Normalise: strip any leading "tel:" so we can rebuild it
-    const digits = phoneText.replace(/^tel:/i, '').trim();
-    phoneLink.href = `tel:${digits.replace(/\s/g, '')}`;
-    phoneLink.className = 'contact-bar-phone';
-    phoneLink.textContent = digits;
+  // Extract appointment link from cell 0
+  if (apptCell) {
+    const existingAnchor = apptCell.querySelector('a');
+    if (existingAnchor) {
+      const apptLink = document.createElement('a');
+      apptLink.className = 'contact-bar-appointment-link';
+      apptLink.href = existingAnchor.href;
+      apptLink.textContent = existingAnchor.textContent.trim();
+      content.appendChild(apptLink);
+    } else {
+      const text = apptCell.textContent.trim();
+      if (text) {
+        const apptLink = document.createElement('a');
+        apptLink.className = 'contact-bar-appointment-link';
+        apptLink.href = '#';
+        apptLink.textContent = text;
+        content.appendChild(apptLink);
+      }
+    }
   }
 
-  content.appendChild(phoneLink);
+  // Build quick help section from cell 1
+  const quickHelp = document.createElement('div');
+  quickHelp.className = 'contact-bar-quickhelp';
+
+  const quickHelpLabel = document.createElement('strong');
+  quickHelpLabel.textContent = 'Quick help';
+  quickHelp.appendChild(quickHelpLabel);
+
+  const ul = document.createElement('ul');
+
+  if (quickHelpCell) {
+    // Gather all anchors and paragraphs from the quick help cell
+    const anchors = [...quickHelpCell.querySelectorAll('a')];
+    const paragraphs = [...quickHelpCell.querySelectorAll('p, li')];
+
+    if (anchors.length > 0) {
+      anchors.forEach((a) => {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = a.href;
+        link.textContent = a.textContent.trim();
+        li.appendChild(link);
+        ul.appendChild(li);
+      });
+    } else if (paragraphs.length > 0) {
+      paragraphs.forEach((p) => {
+        const text = p.textContent.trim();
+        if (text) {
+          const li = document.createElement('li');
+          li.textContent = text;
+          ul.appendChild(li);
+        }
+      });
+    }
+  }
+
+  quickHelp.appendChild(ul);
+  content.appendChild(quickHelp);
   wrapper.appendChild(content);
   return wrapper;
 }
@@ -96,18 +133,18 @@ function wireToggle(section) {
 
 export default function decorate(block) {
   const rows = [...block.querySelectorAll(':scope > div')];
-  if (rows.length < 2) return;
+  if (rows.length < 1) return;
 
   // Parse row cells
-  const [locRow, callRow] = rows;
-  const locCells = [...locRow.querySelectorAll(':scope > div')];
-  const callCells = [...callRow.querySelectorAll(':scope > div')];
+  const [locRow, apptRow] = rows;
+  const locCells = locRow ? [...locRow.querySelectorAll(':scope > div')] : [];
+  const apptCells = apptRow ? [...apptRow.querySelectorAll(':scope > div')] : [];
 
-  const locLabel = locCells[0] ? locCells[0].textContent.trim() : 'Find a Location';
-  const locPlaceholder = locCells[1] ? locCells[1].textContent.trim() : 'Enter ZIP code or city';
+  const locLabel = locCells[0] ? locCells[0].textContent.trim() : 'How can we help?';
+  const locPlaceholder = locCells[1] ? locCells[1].textContent.trim() : 'City, State or ZIP';
 
-  const callLabel = callCells[0] ? callCells[0].textContent.trim() : 'Call Us';
-  const callPhoneSource = callCells[1] || 'tel:1-800-869-3557';
+  const apptCell = apptCells[0] || null;
+  const quickHelpCell = apptCells[1] || null;
 
   // Clear block and rebuild
   block.innerHTML = '';
@@ -116,13 +153,16 @@ export default function decorate(block) {
   inner.className = 'contact-bar-inner';
 
   const locSection = buildLocationSection(locLabel, locPlaceholder, 'contact-bar-location-content');
-  const callSection = buildCallSection(callLabel, callPhoneSource, 'contact-bar-call-content');
-
   inner.appendChild(locSection);
-  inner.appendChild(callSection);
+
+  if (apptRow) {
+    const apptSection = buildAppointmentSection(apptCell, quickHelpCell, 'contact-bar-appointment-content');
+    inner.appendChild(apptSection);
+    wireToggle(apptSection);
+  }
+
   block.appendChild(inner);
 
   // Wire up toggle interactions
   wireToggle(locSection);
-  wireToggle(callSection);
 }
