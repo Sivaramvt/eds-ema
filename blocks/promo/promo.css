@@ -1,0 +1,123 @@
+/* Promo block — full-bleed background image with text overlay */
+
+main .promo {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  margin: 0 !important;
+}
+
+/* Background image — absolute, fills the block */
+main .promo-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main .promo-bg picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+main .promo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text content — mobile: static, stacked below image */
+main .promo-content {
+  position: static;
+  transform: none;
+  padding: 24px 16px;
+  max-width: 100%;
+  z-index: 1;
+  color: #141414;
+}
+
+main .promo-content h1,
+main .promo-content h2,
+main .promo-content h3 {
+  font-size: 2.47rem;
+  font-weight: 300;
+  line-height: 1.333;
+  color: #141414;
+  margin: 0;
+}
+
+main .promo-content p {
+  font-size: 1rem;
+  line-height: 1.25;
+  margin: 16px 0 32px;
+  color: #141414;
+}
+
+/* CTA button */
+main .promo-content .promo-cta {
+  background: #fff;
+  border: 1px solid #3b3331;
+  color: #3b3331;
+  border-radius: 24px;
+  padding: 9px 44px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+main .promo-content .promo-cta:hover {
+  background: #141414;
+  color: #fff;
+  border-color: #141414;
+}
+
+/* ── Mobile: stack image above text ── */
+@media (width < 900px) {
+  main .promo {
+    min-height: unset;
+  }
+
+  main .promo-bg {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  main .promo-bg picture {
+    height: auto;
+  }
+
+  main .promo-bg img {
+    height: auto;
+  }
+
+  main .promo-content {
+    position: static;
+    transform: none;
+    padding: 24px 16px;
+    max-width: 100%;
+    background: #f9f7f6;
+  }
+}
+
+/* ── Desktop: text overlaid on image ── */
+@media (width >= 900px) {
+  main .promo {
+    min-height: 500px;
+  }
+
+  main .promo-content {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 350px;
+    padding: 0;
+    background: transparent;
+  }
+}

@@ -1,0 +1,131 @@
+main .contact-bar-container {
+  background-color: #fff;
+  border-top: 1px solid #e2dede;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+main .contact-bar {
+  padding: 0;
+}
+
+main .contact-bar .contact-bar-inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  gap: 24px;
+}
+
+main .contact-bar .contact-bar-heading h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #141414;
+  margin: 0;
+}
+
+main .contact-bar .contact-bar-location strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #141414;
+  margin-bottom: 8px;
+}
+
+main .contact-bar .contact-bar-location form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+main .contact-bar .contact-bar-location input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #141414;
+  background: #f9f7f6;
+}
+
+main .contact-bar .contact-bar-location input[type="text"]::placeholder {
+  color: #777;
+}
+
+main .contact-bar .contact-bar-search-btn {
+  padding: 8px 20px;
+  background: #141414;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+main .contact-bar .contact-bar-search-btn:hover {
+  background: #333;
+}
+
+main .contact-bar .contact-bar-help a {
+  display: block;
+  color: #6048ad;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+main .contact-bar .contact-bar-help a:hover {
+  text-decoration: underline;
+}
+
+main .contact-bar .contact-bar-help strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #141414;
+  margin-bottom: 6px;
+}
+
+main .contact-bar .contact-bar-help ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+main .contact-bar .contact-bar-help ul li a {
+  color: #3b3331;
+  font-size: 0.875rem;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+main .contact-bar .contact-bar-help ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (width >= 900px) {
+  main .contact-bar .contact-bar-inner {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 32px 40px;
+    gap: 0;
+  }
+
+  main .contact-bar .contact-bar-heading {
+    flex: 0 0 220px;
+    padding-right: 32px;
+    border-right: 1px solid #e2dede;
+  }
+
+  main .contact-bar .contact-bar-location {
+    flex: 1;
+    padding: 0 32px;
+    border-right: 1px solid #e2dede;
+  }
+
+  main .contact-bar .contact-bar-help {
+    flex: 0 0 280px;
+    padding-left: 32px;
+  }
+}

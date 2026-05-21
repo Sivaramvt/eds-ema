@@ -1,0 +1,249 @@
+/* ============================================================
+   Carousel block — mobile-first
+   All selectors scoped under main .carousel
+   ============================================================ */
+
+main .carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: linear-gradient(159deg, #1a1a1a 9%, #7c7270 82%);
+  margin: 0 !important;
+  padding: 32px 5%;
+}
+
+main .carousel .carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Track — slides laid out in a row */
+main .carousel .carousel-track {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+/* Individual slide */
+main .carousel .carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 24px 16px;
+  color: #fff;
+}
+
+main .carousel .carousel-slide--active {
+  /* active state available for styling if needed */
+}
+
+/* Slide image */
+main .carousel .carousel-slide-image {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 16px;
+  line-height: 0;
+}
+
+main .carousel .carousel-slide-image picture {
+  display: block;
+  width: 100%;
+}
+
+main .carousel .carousel-slide-image img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Slide content */
+main .carousel .carousel-slide-content {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+main .carousel .carousel-slide-content h1,
+main .carousel .carousel-slide-content h2,
+main .carousel .carousel-slide-content h3,
+main .carousel .carousel-slide-content h4 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: #fff;
+}
+
+main .carousel .carousel-slide-content p {
+  margin: 0 0 12px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* App store badge images inside content links */
+main .carousel .carousel-slide-content a img {
+  max-height: 52px;
+  width: auto;
+}
+
+/* Hide nav when only 1 slide */
+main .carousel[data-slides="1"] .carousel-btn,
+main .carousel[data-slides="1"] .carousel-dots {
+  display: none;
+}
+
+/* CTA link inside slide */
+main .carousel .carousel-slide-cta a {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 4px;
+  background-color: var(--link-color, #d71e28);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+main .carousel .carousel-slide-cta a:hover,
+main .carousel .carousel-slide-cta a:focus {
+  background-color: var(--link-hover-color, #a81721);
+  outline: 2px solid #a81721;
+  outline-offset: 2px;
+}
+
+/* Prev / Next navigation buttons */
+main .carousel .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+}
+
+main .carousel .carousel-btn:hover,
+main .carousel .carousel-btn:focus {
+  background-color: rgba(0, 0, 0, 0.7);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+main .carousel .carousel-btn--prev {
+  left: 8px;
+}
+
+main .carousel .carousel-btn--next {
+  right: 8px;
+}
+
+/* Dot indicators */
+main .carousel .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0 8px;
+}
+
+main .carousel .carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--link-color, #d71e28);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+main .carousel .carousel-dot--active {
+  background-color: var(--link-color, #d71e28);
+  transform: scale(1.2);
+}
+
+main .carousel .carousel-dot:hover,
+main .carousel .carousel-dot:focus {
+  background-color: var(--link-color, #d71e28);
+  outline: 2px solid var(--link-color, #d71e28);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Desktop layout — side-by-side image + content
+   ============================================================ */
+
+@media (width >= 900px) {
+  main .carousel .carousel-slide {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    gap: 40px;
+    text-align: left;
+  }
+
+  main .carousel .carousel-slide-image {
+    flex: 0 0 45%;
+    max-width: 45%;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main .carousel .carousel-slide-image img {
+    max-height: 380px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  main .carousel .carousel-slide-content {
+    flex: 0 0 45%;
+    max-width: 45%;
+    text-align: left;
+  }
+
+  main .carousel .carousel-slide-content h2,
+  main .carousel .carousel-slide-content h3 {
+    font-size: 1.75rem;
+  }
+
+  main .carousel .carousel-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.75rem;
+  }
+
+  main .carousel .carousel-btn--prev {
+    left: 16px;
+  }
+
+  main .carousel .carousel-btn--next {
+    right: 16px;
+  }
+
+  main .carousel .carousel-dot {
+    width: 12px;
+    height: 12px;
+  }
+}
