@@ -28,6 +28,40 @@ main .columns > div > div img {
   display: block;
 }
 
+/* Icon images inside column cells (not dedicated img-col) */
+main .columns > div > div > p > picture img,
+main .columns > div > div > picture img {
+  max-width: 64px;
+  max-height: 64px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* 4-column card grid for small promos */
+main .columns.columns-4-cols > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+main .columns.columns-4-cols > div > div {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px 16px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (width < 900px) {
+  main .columns.columns-4-cols > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 main .columns a {
   color: #141414;
   text-decoration: none;
