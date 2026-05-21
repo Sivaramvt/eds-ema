@@ -133,6 +133,9 @@ export default function decorate(block) {
   container.append(track, prevBtn, nextBtn, dotsContainer);
   block.replaceChildren(container);
 
+  // Set slide count so CSS can hide nav for single-slide carousels
+  block.dataset.slides = totalSlides;
+
   // State
   const state = { current: 0, timer: null };
 
