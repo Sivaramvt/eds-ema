@@ -1,0 +1,122 @@
+/* Promo block — mobile-first, side-by-side on desktop */
+
+main .promo {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--background-color, #fff);
+}
+
+main .promo .promo-inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Image */
+main .promo .promo-image {
+  width: 100%;
+  line-height: 0;
+}
+
+main .promo .promo-image picture {
+  display: block;
+  width: 100%;
+}
+
+main .promo .promo-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Text */
+main .promo .promo-text {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+main .promo .promo-text h1,
+main .promo .promo-text h2,
+main .promo .promo-text h3 {
+  margin: 0;
+  font-size: var(--heading-font-size-l, 1.75rem);
+  line-height: 1.2;
+  color: var(--text-color, #333);
+}
+
+main .promo .promo-text p {
+  margin: 0;
+  font-size: var(--body-font-size-m, 1rem);
+  line-height: 1.6;
+  color: var(--text-color, #333);
+}
+
+/* CTA button */
+main .promo .promo-text a.promo-cta.button,
+main .promo .promo-text .promo-cta-wrapper a {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: var(--link-color, #d71e28);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--body-font-size-s, 0.875rem);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+main .promo .promo-text a.promo-cta.button:hover,
+main .promo .promo-text .promo-cta-wrapper a:hover {
+  background-color: #b01820;
+  border-color: #b01820;
+}
+
+main .promo .promo-text a.promo-cta.button:focus-visible,
+main .promo .promo-text .promo-cta-wrapper a:focus-visible {
+  outline: 3px solid var(--link-color, #d71e28);
+  outline-offset: 2px;
+}
+
+/* ── Desktop layout ── */
+@media (width >= 900px) {
+  main .promo .promo-inner {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 420px;
+  }
+
+  main .promo .promo-image {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  main .promo .promo-image img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  main .promo .promo-text {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 48px 56px;
+    gap: 20px;
+  }
+
+  main .promo .promo-text h1,
+  main .promo .promo-text h2,
+  main .promo .promo-text h3 {
+    font-size: var(--heading-font-size-xl, 2.25rem);
+  }
+
+  /* text-left (default): text on left, image on right — row order as authored in JS */
+  /* text-right: image on left, text on right — row order as authored in JS */
+  /* No additional CSS re-ordering needed; JS handles DOM order per variant */
+}
