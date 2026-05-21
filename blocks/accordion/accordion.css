@@ -1,0 +1,161 @@
+/* Accordion block — scoped under main .accordion */
+
+main .accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Description list reset */
+main .accordion dl {
+  margin: 0;
+  padding: 0;
+}
+
+/* Each question row */
+main .accordion dt {
+  border-top: 1px solid #d4d0cd;
+}
+
+main .accordion dl > dt:last-of-type,
+main .accordion dl > dd:last-of-type {
+  border-bottom: 1px solid #d4d0cd;
+}
+
+/* Trigger button */
+main .accordion .accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: var(--body-font-size-m, 1rem);
+  font-weight: 600;
+  color: var(--text-color, #333);
+  line-height: 1.4;
+  gap: 16px;
+}
+
+main .accordion .accordion-trigger:hover,
+main .accordion .accordion-trigger:focus-visible {
+  color: #b5121b; /* Wells Fargo red */
+  outline: none;
+}
+
+main .accordion .accordion-trigger:focus-visible {
+  outline: 2px solid #b5121b;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Chevron icon — pure CSS, no image needed */
+main .accordion .accordion-icon {
+  flex-shrink: 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+main .accordion .accordion-icon::before,
+main .accordion .accordion-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background-color: currentcolor;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+main .accordion .accordion-icon::before {
+  left: 2px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+main .accordion .accordion-icon::after {
+  right: 2px;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Rotate chevron when open */
+main .accordion .accordion-trigger[aria-expanded='true'] .accordion-icon::before {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+main .accordion .accordion-trigger[aria-expanded='true'] .accordion-icon::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Answer panel */
+main .accordion .accordion-panel {
+  margin: 0;
+  padding: 0 0 16px;
+  font-size: var(--body-font-size-m, 1rem);
+  color: var(--text-color, #333);
+  line-height: 1.6;
+}
+
+main .accordion .accordion-panel[hidden] {
+  display: none;
+}
+
+/* Smooth reveal — browsers that support @starting-style */
+main .accordion .accordion-panel:not([hidden]) {
+  animation: accordion-open 0.25s ease forwards;
+}
+
+@keyframes accordion-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Links inside answers */
+main .accordion .accordion-panel a {
+  color: #b5121b;
+  text-decoration: underline;
+}
+
+main .accordion .accordion-panel a:hover {
+  text-decoration: none;
+}
+
+/* Paragraph spacing inside answers */
+main .accordion .accordion-panel p {
+  margin: 0 0 8px;
+}
+
+main .accordion .accordion-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists inside answers */
+main .accordion .accordion-panel ul,
+main .accordion .accordion-panel ol {
+  padding-left: 20px;
+  margin: 0 0 8px;
+}
+
+/* Desktop — slightly more generous padding */
+@media (width >= 900px) {
+  main .accordion .accordion-trigger {
+    padding: 20px 0;
+    font-size: var(--body-font-size-l, 1.125rem);
+  }
+
+  main .accordion .accordion-panel {
+    padding: 0 24px 20px 0;
+    font-size: var(--body-font-size-m, 1rem);
+  }
+}
