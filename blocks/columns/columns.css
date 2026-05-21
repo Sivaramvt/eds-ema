@@ -1,13 +1,13 @@
 .columns > div {
   display: flex;
   flex-direction: column;
-}
-
-.columns img {
-  width: 100%;
+  gap: 16px;
 }
 
 .columns > div > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   order: 1;
 }
 
@@ -17,6 +17,24 @@
 
 .columns > div > .columns-img-col img {
   display: block;
+}
+
+main .columns > div > div img {
+  max-width: 64px;
+  max-height: 64px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+main .columns a {
+  color: #141414;
+  text-decoration: none;
+}
+
+main .columns a:hover {
+  text-decoration: underline;
 }
 
 @media (width >= 900px) {
@@ -29,5 +47,10 @@
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  .columns-8-cols > div {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
