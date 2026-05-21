@@ -1,32 +1,38 @@
-.cards > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+main .cards > ul {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.cards > ul > li {
-  /* border: 1px solid #dadada; — removed, source has no card border */
+@media (width < 900px) {
+  main .cards > ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+main .cards > ul > li {
+  /* border: 1px solid — removed, source has no card border */
   background-color: var(--background-color);
 }
 
-.cards .cards-card-body {
+main .cards .cards-card-body {
   margin: 16px;
 }
 
-.cards .cards-card-image {
+main .cards .cards-card-image {
   line-height: 0;
 }
 
-.cards > ul > li img {
-  width: 100%;
+main .cards li picture img {
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  width: 100%;
 }
 
-main .cards .cards-card-body > p:last-child a {
+main .cards .cards-card-body a {
   display: inline-block;
   background: #fff;
   border: 1px solid #3b3331;
@@ -35,13 +41,11 @@ main .cards .cards-card-body > p:last-child a {
   padding: 9px 16px;
   font-weight: 600;
   text-decoration: none;
-  width: 100%;
-  box-sizing: border-box;
   text-align: center;
   margin-top: 12px;
 }
 
-main .cards .cards-card-body > p:last-child a:hover {
+main .cards .cards-card-body a:hover {
   background: #141414;
   color: #fff;
   border-color: #141414;

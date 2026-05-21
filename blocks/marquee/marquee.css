@@ -11,7 +11,7 @@ main .marquee {
   margin: 0 !important;
 }
 
-/* Background picture */
+/* Background picture — mobile: static, flows normally */
 main .marquee .marquee-bg {
   display: block;
   width: 100%;
@@ -82,12 +82,27 @@ main .marquee .marquee-cta:focus {
 @media (width >= 900px) {
   main .marquee {
     position: relative;
+    min-height: 420px;
   }
 
+  /* Background image fills the full block area */
   main .marquee .marquee-bg {
-    position: static;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
   }
 
+  main .marquee .marquee-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Content overlaid on the right side of the image */
   main .marquee .marquee-content {
     position: absolute;
     right: 5%;
@@ -96,6 +111,8 @@ main .marquee .marquee-cta:focus {
     max-width: 44%;
     padding: 0;
     background: transparent;
+    color: #141414;
+    z-index: 1;
   }
 
   main .marquee .marquee-content h1,

@@ -165,4 +165,13 @@ export default function decorate(block) {
 
   // Wire up toggle interactions
   wireToggle(locSection);
+
+  // Auto-expand the first section (Find a location) on load
+  const firstToggle = locSection.querySelector('.contact-bar-toggle');
+  const firstContent = locSection.querySelector('.contact-bar-content');
+  if (firstToggle && firstContent) {
+    firstToggle.setAttribute('aria-expanded', 'true');
+    firstContent.removeAttribute('aria-hidden');
+    locSection.classList.add('is-open');
+  }
 }

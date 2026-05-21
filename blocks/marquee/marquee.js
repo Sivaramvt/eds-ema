@@ -1,49 +1,27 @@
 export default function decorate(block) {
-  // Row 0: background image (picture element)
-  // Row 1: content (heading + text + links as CTAs)
+  const [imageRow, contentRow] = [...block.children[0].children];
 
-  const rows = [...block.children];
+  // Background image
+  const bg = document.createElement('div');
+  bg.className = 'marquee-bg';
+  bg.append(imageRow.querySelector('picture'));
 
-  // Extract background picture from first row
-  const bgRow = rows[0];
-  const bgPicture = bgRow && bgRow.querySelector('picture');
+  // Content overlay
+  const content = document.createElement('div');
+  content.className = 'marquee-content';
+  content.append(...contentRow.children);
 
-  // Extract content from second row
-  const contentRow = rows[1];
+  // Style CTA links as buttons
+  content.querySelectorAll('p > a').forEach((a) => a.classList.add('marquee-cta'));
 
-  // Set up background image
-  if (bgPicture) {
-    // LCP image — set fetchpriority high, eager loading
-    const img = bgPicture.querySelector('img');
-    if (img) {
-      img.loading = 'eager';
-      img.fetchPriority = 'high';
-      img.setAttribute('fetchpriority', 'high');
-    }
-    bgPicture.classList.add('marquee-bg');
-    block.prepend(bgPicture);
+  // Set fetchpriority on hero image
+  const img = bg.querySelector('img');
+  if (img) {
+    img.fetchPriority = 'high';
+    img.loading = 'eager';
+    img.setAttribute('fetchpriority', 'high');
   }
 
-  // Build content wrapper
-  if (contentRow) {
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'marquee-content';
-
-    // Move all children from contentRow's cell(s)
-    [...contentRow.children].forEach((cell) => {
-      while (cell.firstElementChild) {
-        contentDiv.append(cell.firstElementChild);
-      }
-    });
-
-    // Style links as CTA buttons
-    contentDiv.querySelectorAll('a').forEach((a) => {
-      a.classList.add('marquee-cta');
-    });
-
-    block.append(contentDiv);
-  }
-
-  // Remove original rows
-  rows.forEach((row) => row.remove());
+  block.textContent = '';
+  block.append(bg, content);
 }
