@@ -9,7 +9,7 @@ main .carousel {
   width: 100%;
   background: linear-gradient(159deg, #1a1a1a 9%, #7c7270 82%);
   margin: 0 !important;
-  padding: 52px 5%;
+  padding: 32px 5%;
 }
 
 main .carousel .carousel-container {
@@ -205,6 +205,16 @@ main .carousel .carousel-dot:focus {
     flex: 0 0 45%;
     max-width: 45%;
     margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main .carousel .carousel-slide-image img {
+    max-height: 380px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 
   main .carousel .carousel-slide-content {

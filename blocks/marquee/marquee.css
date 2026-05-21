@@ -102,10 +102,10 @@ main .marquee .marquee-cta:focus {
     object-fit: cover;
   }
 
-  /* Content overlaid on the right side of the image */
+  /* Content overlaid on the left side of the image (cream background area) */
   main .marquee .marquee-content {
     position: absolute;
-    right: 5%;
+    left: 8%;
     top: 50%;
     transform: translateY(-50%);
     max-width: 44%;

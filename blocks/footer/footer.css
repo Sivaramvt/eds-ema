@@ -1,20 +1,113 @@
+/* ── Wells Fargo Footer ──────────────────────────────────────────────────── */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background: #f5f2f0;
+  border-top: 1px solid #e2dede;
+  font-size: 0.875rem;
+  color: #141414;
 }
 
-footer .footer > div {
-  margin: auto;
+footer .footer {
+  padding: 0;
+}
+
+/* First section: link columns */
+footer .footer > div:first-child {
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  margin: 0 auto;
+  padding: 40px 32px 32px;
+  border-bottom: 1px solid #e2dede;
 }
 
-footer .footer p {
-  margin: 0;
+/* Columns block inside footer */
+footer .footer .columns > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+@media (width < 900px) {
+  footer .footer .columns > div {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
+}
+
+footer .footer .columns p {
+  margin: 0 0 12px;
+}
+
+footer .footer .columns p strong {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #141414;
+  margin-bottom: 12px;
+}
+
+footer .footer .columns ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+footer .footer .columns ul li a {
+  color: #3b3331;
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+footer .footer .columns ul li a:hover {
+  color: #c41230;
+  text-decoration: underline;
+}
+
+/* Second section: investment disclaimer */
+footer .footer > div:nth-child(2) {
+  background: #e8e4e1;
+  padding: 20px 32px;
+}
+
+footer .footer > div:nth-child(2) > div {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer .footer > div:nth-child(2) p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #3b3331;
+  line-height: 1.5;
+}
+
+/* Third section: copyright bar */
+footer .footer > div:nth-child(3) {
+  background: #f5f2f0;
+  padding: 16px 32px 24px;
+  border-top: 1px solid #e2dede;
+}
+
+footer .footer > div:nth-child(3) > div {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer .footer > div:nth-child(3) p {
+  margin: 0 0 4px;
+  font-size: 0.8125rem;
+  color: #3b3331;
+}
+
+footer .footer > div:nth-child(3) a {
+  color: #3b3331;
+  text-decoration: none;
+}
+
+footer .footer > div:nth-child(3) a:hover {
+  color: #c41230;
+  text-decoration: underline;
 }

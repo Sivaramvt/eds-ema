@@ -1,14 +1,7 @@
-/* Contact Bar Block
- * Collapsible utility bar — mobile-first
- * Scoped under: main .contact-bar
- */
-
 main .contact-bar-container {
-  position: static;
-  z-index: 100;
   background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,.15);
   border-top: 1px solid #e2dede;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 main .contact-bar {
@@ -20,95 +13,42 @@ main .contact-bar .contact-bar-inner {
   flex-direction: column;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 24px 16px;
+  gap: 24px;
 }
 
-/* ── Individual section ─────────────────────────────────────────────────── */
-
-main .contact-bar .contact-bar-section {
-  border-bottom: 1px solid #e2dede;
-}
-
-main .contact-bar .contact-bar-section:last-child {
-  border-bottom: none;
-}
-
-/* ── Toggle button ──────────────────────────────────────────────────────── */
-
-main .contact-bar .contact-bar-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 12px 16px;
-  background: transparent;
-  border: none;
-  color: #141414;
-  font-size: 1.41rem;
+main .contact-bar .contact-bar-heading h2 {
+  font-size: 1.5rem;
   font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-  gap: 8px;
+  color: #141414;
+  margin: 0;
 }
 
-main .contact-bar .contact-bar-toggle::after {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid #141414;
-  border-bottom: 2px solid #141414;
-  transform: rotate(45deg);
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
+main .contact-bar .contact-bar-location strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #141414;
+  margin-bottom: 8px;
 }
 
-main .contact-bar .contact-bar-section.is-open .contact-bar-toggle::after {
-  transform: rotate(-135deg);
-}
-
-main .contact-bar .contact-bar-toggle:focus-visible {
-  outline: 2px solid #141414;
-  outline-offset: -2px;
-}
-
-/* ── Collapsible content ────────────────────────────────────────────────── */
-
-main .contact-bar .contact-bar-content {
-  display: none;
-  padding: 0 16px 12px;
-  gap: 8px;
-  background: #fff;
-  border: 1px solid #e2dede;
-  border-radius: 4px;
-  padding: 16px;
-}
-
-main .contact-bar .contact-bar-section.is-open .contact-bar-content {
+main .contact-bar .contact-bar-location form {
   display: flex;
+  gap: 8px;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-/* ── Location input + search button ────────────────────────────────────── */
-
-main .contact-bar .contact-bar-input {
-  flex: 1 1 160px;
-  min-width: 0;
+main .contact-bar .contact-bar-location input[type="text"] {
+  flex: 1;
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background: #f9f7f6;
-  color: #141414;
   font-size: 0.9rem;
+  color: #141414;
+  background: #f9f7f6;
 }
 
-main .contact-bar .contact-bar-input::placeholder {
+main .contact-bar .contact-bar-location input[type="text"]::placeholder {
   color: #777;
-}
-
-main .contact-bar .contact-bar-input:focus {
-  outline: 2px solid #141414;
-  outline-offset: 1px;
 }
 
 main .contact-bar .contact-bar-search-btn {
@@ -127,89 +67,65 @@ main .contact-bar .contact-bar-search-btn:hover {
   background: #333;
 }
 
-main .contact-bar .contact-bar-search-btn:focus-visible {
-  outline: 2px solid #141414;
-  outline-offset: 1px;
-}
-
-/* ── Appointment section ────────────────────────────────────────────────── */
-
-main .contact-bar .contact-bar-appointment-link {
+main .contact-bar .contact-bar-help a {
+  display: block;
   color: #6048ad;
   font-weight: 600;
   text-decoration: none;
-  display: block;
   margin-bottom: 12px;
+  font-size: 0.9rem;
 }
 
-main .contact-bar .contact-bar-appointment-link:hover {
+main .contact-bar .contact-bar-help a:hover {
   text-decoration: underline;
 }
 
-/* ── Quick help links ───────────────────────────────────────────────────── */
-
-main .contact-bar .contact-bar-quickhelp {
-  width: 100%;
-}
-
-main .contact-bar .contact-bar-quickhelp strong {
+main .contact-bar .contact-bar-help strong {
   display: block;
-  color: #141414;
   font-size: 0.9rem;
+  color: #141414;
   margin-bottom: 6px;
 }
 
-main .contact-bar .contact-bar-quickhelp ul {
+main .contact-bar .contact-bar-help ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-main .contact-bar .contact-bar-quickhelp ul li a,
-main .contact-bar .contact-bar-quickhelp ul li {
+main .contact-bar .contact-bar-help ul li a {
   color: #3b3331;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   text-decoration: none;
+  font-weight: 400;
 }
 
-main .contact-bar .contact-bar-quickhelp ul li a:hover {
+main .contact-bar .contact-bar-help ul li a:hover {
   text-decoration: underline;
 }
-
-/* ── Desktop layout: horizontal bar ────────────────────────────────────── */
 
 @media (width >= 900px) {
   main .contact-bar .contact-bar-inner {
     flex-direction: row;
-    align-items: stretch;
-    padding: 0 32px;
+    align-items: flex-start;
+    padding: 32px 40px;
+    gap: 0;
   }
 
-  main .contact-bar .contact-bar-section {
-    border-bottom: none;
+  main .contact-bar .contact-bar-heading {
+    flex: 0 0 220px;
+    padding-right: 32px;
     border-right: 1px solid #e2dede;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
   }
 
-  main .contact-bar .contact-bar-section:last-child {
-    border-right: none;
+  main .contact-bar .contact-bar-location {
+    flex: 1;
+    padding: 0 32px;
+    border-right: 1px solid #e2dede;
   }
 
-  main .contact-bar .contact-bar-toggle {
-    padding: 14px 20px;
-    width: auto;
-    flex-shrink: 0;
-  }
-
-  main .contact-bar .contact-bar-section.is-open .contact-bar-content {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-  }
-
-  main .contact-bar .contact-bar-content {
-    padding: 0;
+  main .contact-bar .contact-bar-help {
+    flex: 0 0 280px;
+    padding-left: 32px;
   }
 }
