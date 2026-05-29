@@ -5,6 +5,12 @@ main .marquee-container .marquee-wrapper {
   padding: 0;
 }
 
+/* Pull the hero section up behind the sticky header so the image fills from top-0,
+   matching WF's layout where the masthead overlays the hero image. */
+main > .section:first-child:has(.marquee) {
+  margin-top: calc(-1 * var(--nav-height));
+}
+
 main .marquee {
   position: relative;
   overflow: hidden;
@@ -82,7 +88,7 @@ main .marquee .marquee-cta:focus {
 @media (width >= 900px) {
   main .marquee {
     position: relative;
-    min-height: 420px;
+    min-height: calc(420px + var(--nav-height));
   }
 
   /* Background image fills the full block area */

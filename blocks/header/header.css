@@ -2,13 +2,12 @@
 
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: #fff;
+  background-color: #d71e28;
   width: 100%;
   z-index: 100;
   position: sticky;
   top: 0;
-  border-bottom: 1px solid #e2dede;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-bottom: 4px solid #ffcd41;
 }
 
 header nav {
@@ -279,7 +278,14 @@ header nav .nav-tools {
 /* ── WF-specific overrides ──────────────────────────────────────────────── */
 
 header nav {
-  height: 56px;
+  height: 75px;
+  color: #fff;
+}
+
+/* Hamburger — white on red background */
+header nav .nav-hamburger button {
+  background-color: transparent;
+  color: #fff;
 }
 
 /* Brand / Logo */
@@ -295,44 +301,44 @@ header .nav-brand a {
 
 header .nav-brand img {
   width: auto;
-  height: 32px;
+  height: 36px;
   max-width: 180px;
 }
 
 header .nav-brand .nav-logo-text {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #c41230;
+  color: #fff;
   letter-spacing: -0.5px;
   white-space: nowrap;
 }
 
-/* Nav section links */
+/* Nav section links — white on red */
 header nav .nav-sections ul {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li {
-  font-weight: 600;
-  color: #141414;
+  font-weight: 400;
+  color: #fff;
 }
 
 header nav .nav-sections a {
-  color: #141414;
+  color: #fff;
   text-decoration: none;
 }
 
 header nav .nav-sections a:hover {
-  color: #c41230;
+  color: #fff;
   text-decoration: underline;
 }
 
-/* Dropdown menus */
+/* Dropdown menus — white bg on red header */
 @media (width >= 900px) {
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
     background: #fff;
     border: 1px solid #e2dede;
-    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
     border-radius: 0 0 4px 4px;
     padding: 8px 0;
   }
@@ -352,7 +358,7 @@ header nav .nav-sections a:hover {
   }
 }
 
-/* Tools: ATMs link + Sign On button */
+/* Tools: utility links + Sign On */
 header nav .nav-tools {
   display: flex;
   align-items: center;
@@ -365,26 +371,26 @@ header nav .nav-tools p {
 }
 
 header nav .nav-tools a {
-  font-size: 0.875rem;
-  color: #141414;
+  font-size: 0.8125rem;
+  color: #fff;
   text-decoration: none;
 }
 
 header nav .nav-tools a:hover {
   text-decoration: underline;
-  color: #c41230;
+  color: #fff;
 }
 
-/* Sign On button (wrapped in <strong> → .button.primary) */
+/* Sign On button — dark pill on red background */
 header nav .nav-tools .button.primary,
 header nav .nav-tools strong a {
   display: inline-block;
-  background: #c41230;
+  background: #141414;
   color: #fff !important;
   border: none;
   border-radius: 4px;
   padding: 8px 20px;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   text-decoration: none !important;
   cursor: pointer;
@@ -393,6 +399,6 @@ header nav .nav-tools strong a {
 
 header nav .nav-tools .button.primary:hover,
 header nav .nav-tools strong a:hover {
-  background: #a01028;
+  background: #333;
   text-decoration: none !important;
 }

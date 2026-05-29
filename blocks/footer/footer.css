@@ -62,7 +62,7 @@ footer .footer .columns ul li a {
 }
 
 footer .footer .columns ul li a:hover {
-  color: #c41230;
+  color: #d71e28;
   text-decoration: underline;
 }
 
@@ -108,6 +108,6 @@ footer .footer > div:nth-child(3) a {
 }
 
 footer .footer > div:nth-child(3) a:hover {
-  color: #c41230;
+  color: #d71e28;
   text-decoration: underline;
 }

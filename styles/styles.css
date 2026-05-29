@@ -5,8 +5,10 @@
 
 :root {
   /* ── Brand colors ─────────────────────────────────────────────────────── */
-  --color-red:          #c41230;   /* WF primary red */
-  --color-red-dark:     #a01028;   /* hover/active red */
+  --color-red:          #d71e28;   /* WF primary red (exact) */
+  --color-red-dark:     #b01c24;   /* hover/active red */
+  --color-yellow:       #ffcd41;   /* WF gold / masthead bottom border */
+  --color-purple:       #6048ad;   /* WF document/link accent */
   --color-dark:         #141414;   /* near-black */
   --color-body:         #3b3331;   /* warm dark-brown body text */
   --color-border:       #e2dede;   /* warm gray border */
@@ -20,12 +22,11 @@
   --dark-color:         #3b3331;
   --text-color:         #3b3331;
   --link-color:         #3b3331;
-  --link-hover-color:   #c41230;
+  --link-hover-color:   #d71e28;
 
   /* ── Typography ──────────────────────────────────────────────────────── */
-  /* WF uses Wells Fargo Sans (proprietary) — Helvetica Neue is the closest system match */
-  --body-font-family:    'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --heading-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --body-font-family:    'Wells Fargo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --heading-font-family: 'Wells Fargo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* body sizes — mobile */
   --body-font-size-m:  1rem;       /* 16px */
@@ -41,7 +42,7 @@
   --heading-font-size-xs:  1rem;     /* 16px */
 
   /* ── Layout ──────────────────────────────────────────────────────────── */
-  --nav-height:       56px;
+  --nav-height:       75px;  /* WF masthead height */
   --max-width:        1200px;
   --section-padding:  24px;
 

@@ -1,15 +1,46 @@
-/*
- * Wells Fargo Typography
- * WF uses "Wells Fargo Sans" (proprietary). Helvetica Neue / Arial is the
- * standard web fallback and what most users see. No custom woff2 needed.
- *
- * If a licensed webfont matching Wells Fargo Sans is available, declare it here.
- */
+/* Wells Fargo Sans — loaded from public WF CDN */
 
-/* Fallback metric-matched to Helvetica Neue for CLS prevention */
 @font-face {
-  font-family: wf-sans-fallback;
-  size-adjust: 100%;
-  ascent-override: 90%;
-  src: local('Arial');
+  font-family: 'Wells Fargo Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-rg.woff2') format('woff2'),
+       url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-rg.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Wells Fargo Sans';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-lt.woff2') format('woff2'),
+       url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-lt.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Wells Fargo Sans';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-sbd.woff2') format('woff2'),
+       url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-sbd.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Wells Fargo Sans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-bd.woff2') format('woff2'),
+       url('https://www17.wellsfargomedia.com/assets/fonts/wellsfargosans-bd.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Wells Fargo Sans Display';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://www17.wellsfargomedia.com/assets/fonts/WellsFargoSans_W_Display.woff2') format('woff2'),
+       url('https://www17.wellsfargomedia.com/assets/fonts/WellsFargoSans_W_Display.woff') format('woff');
 }
